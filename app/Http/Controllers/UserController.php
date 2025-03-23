@@ -31,4 +31,28 @@ class UserController extends Controller
 
         return redirect('/index');
     }
+
+    public function edit(int $id){
+
+        $data = $this->user->find($id);
+        return view('user.edit',['data'=> $data ]);
+    }
+
+    public function update(int $id, Request $request){
+        $this->user = $this->user->find($id);
+        $this->user->name = $request->name;
+        $this->user->email = $request->email;
+        $this->user->password = $request->password;
+        $this->user->save();
+
+        return redirect('/index');
+    }
+
+    public function destroy(int $id){
+         
+        $this->user = $this->user->find($id);
+        $this->user->delete();
+
+        return redirect('/index');
+    }
 }

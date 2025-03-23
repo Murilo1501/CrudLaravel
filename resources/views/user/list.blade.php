@@ -13,6 +13,8 @@
             <tr>
                 <td>{{$dataUser->name}}</td>
                 <td>{{$dataUser->email}}</td>
+                <td><a href="{{ route('edit',$dataUser->id)}}">Edit</a></td>
+                <td><a href="{{ route('destroy',$dataUser->id)}}">Delete</a></td>
             </tr>
         @endforeach
     </table>
